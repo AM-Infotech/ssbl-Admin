@@ -110,6 +110,18 @@
                     </div>
                 </div>
             </div>
+
+	 <!-- Toast Alert -->
+            <div class="col-md-4">
+                <div class="panel panel-warning">
+                    <div class="panel-heading">Toast Alert</div>
+                    <div class="panel-body">
+                        <p>A toast-style alert that appears in the corner of the screen.</p>
+                        <button class="btn btn-warning btn-block" onclick="toastAlert()">Show Toast Alert</button>
+			    <button class="btn btn-info btn-block" onclick="showCode('toastAlert')">Show Code</button>
+                    </div>
+                </div>
+            </div>
         </div>
     </div>
 
@@ -167,11 +179,40 @@
             });
         }
 
+	 function toastAlert() {
+            const Toast = Swal.mixin({
+                toast: true,
+                position: 'top-end',
+                showConfirmButton: false,
+                timer: 3000,
+                timerProgressBar: true,
+            });
+            
+            Toast.fire({
+                icon: 'success',
+                title: 'Signed in successfully'
+            });
+        }
+	    
         // Show Code Function
         function showCode(type) {
             let code = '';
 
             switch (type) {
+		 case 'toastAlert':	
+			code = `const Toast = Swal.mixin({
+                toast: true,
+                position: 'top-end',
+                showConfirmButton: false,
+                timer: 3000,
+                timerProgressBar: true,
+            });
+            
+            Toast.fire({
+                icon: 'success',
+                title: 'Signed in successfully'
+            });`;
+                    break;
                 case 'basic':
                     code = `Swal.fire('Hello world!');`;
                     break;
