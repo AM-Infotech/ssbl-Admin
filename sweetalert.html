@@ -1,0 +1,275 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>SweetAlert Demo</title>
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css">
+    <script src="https://cdn.jsdelivr.net/npm/sweetalert2@11"></script>
+    
+</head>
+<body>
+    <div class="container">
+        <h1 class="text-center">SweetAlert Demos</h1>
+      	<div class="alert alert-info"><code><script src="https://kit.fontawesome.com/7aabe72cdf.js" crossorigin="anonymous"></script></code></div>
+
+        <div class="row">
+            <!-- Basic Alert -->
+            <div class="col-md-4">
+                <div class="panel panel-primary">
+                    <div class="panel-heading">Basic Alert</div>
+                    <div class="panel-body">
+                        <p>A basic alert example.</p>
+                        <button class="btn btn-primary btn-block" onclick="basicAlert()">Show Basic Alert</button>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Success Alert -->
+            <div class="col-md-4">
+                <div class="panel panel-success">
+                    <div class="panel-heading">Success Alert</div>
+                    <div class="panel-body">
+                        <p>A success alert example.</p>
+                        <button class="btn btn-success btn-block" onclick="successAlert()">Show Success Alert</button>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Error Alert -->
+            <div class="col-md-4">
+                <div class="panel panel-danger">
+                    <div class="panel-heading">Error Alert</div>
+                    <div class="panel-body">
+                        <p>An error alert example.</p>
+                        <button class="btn btn-danger btn-block" onclick="errorAlert()">Show Error Alert</button>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <div class="row">
+            <!-- Warning Alert -->
+            <div class="col-md-4">
+                <div class="panel panel-warning">
+                    <div class="panel-heading">Warning Alert</div>
+                    <div class="panel-body">
+                        <p>A warning alert example.</p>
+                        <button class="btn btn-warning btn-block" onclick="warningAlert()">Show Warning Alert</button>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Info Alert -->
+            <div class="col-md-4">
+                <div class="panel panel-info">
+                    <div class="panel-heading">Info Alert</div>
+                    <div class="panel-body">
+                        <p>An info alert example.</p>
+                        <button class="btn btn-info btn-block" onclick="infoAlert()">Show Info Alert</button>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Confirmation Alert -->
+            <div class="col-md-4">
+                <div class="panel panel-default">
+                    <div class="panel-heading">Confirmation Alert</div>
+                    <div class="panel-body">
+                        <p>A confirmation alert with custom buttons.</p>
+                        <button class="btn btn-default btn-block" onclick="confirmAlert()">Show Confirmation Alert</button>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <div class="row">
+            <!-- Custom HTML Alert -->
+            <div class="col-md-4">
+                <div class="panel panel-primary">
+                    <div class="panel-heading">Custom HTML Alert</div>
+                    <div class="panel-body">
+                        <p>An alert with custom HTML content.</p>
+                        <button class="btn btn-primary btn-block" onclick="htmlAlert()">Show HTML Alert</button>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Auto-close Alert -->
+            <div class="col-md-4">
+                <div class="panel panel-success">
+                    <div class="panel-heading">Auto-close Alert</div>
+                    <div class="panel-body">
+                        <p>An alert that auto-closes after a certain time.</p>
+                        <button class="btn btn-success btn-block" onclick="autoCloseAlert()">Show Auto-close Alert</button>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Input Alert -->
+            <div class="col-md-4">
+                <div class="panel panel-info">
+                    <div class="panel-heading">Input Alert</div>
+                    <div class="panel-body">
+                        <p>An alert with an input field.</p>
+                        <button class="btn btn-info btn-block" onclick="inputAlert()">Show Input Alert</button>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <div class="row">
+            <!-- Image Alert -->
+            <div class="col-md-4">
+                <div class="panel panel-default">
+                    <div class="panel-heading">Image Alert</div>
+                    <div class="panel-body">
+                        <p>An alert with a custom image.</p>
+                        <button class="btn btn-default btn-block" onclick="imageAlert()">Show Image Alert</button>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Toast Alert -->
+            <div class="col-md-4">
+                <div class="panel panel-warning">
+                    <div class="panel-heading">Toast Alert</div>
+                    <div class="panel-body">
+                        <p>A toast-style alert that appears in the corner of the screen.</p>
+                        <button class="btn btn-warning btn-block" onclick="toastAlert()">Show Toast Alert</button>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <script>
+        function basicAlert() {
+            Swal.fire('Hello world!');
+        }
+
+        function successAlert() {
+            Swal.fire({
+                icon: 'success',
+                title: 'Success!',
+                text: 'Your operation was successful!'
+            });
+        }
+
+        function errorAlert() {
+            Swal.fire({
+                icon: 'error',
+                title: 'Oops...',
+                text: 'Something went wrong!',
+            });
+        }
+
+        function warningAlert() {
+            Swal.fire({
+                icon: 'warning',
+                title: 'Warning!',
+                text: 'You are about to delete something important.'
+            });
+        }
+
+        function infoAlert() {
+            Swal.fire({
+                icon: 'info',
+                title: 'Information',
+                text: 'Here is some important information.'
+            });
+        }
+
+        function confirmAlert() {
+            Swal.fire({
+                title: 'Are you sure?',
+                text: "You won't be able to revert this!",
+                icon: 'warning',
+                showCancelButton: true,
+                confirmButtonColor: '#3085d6',
+                cancelButtonColor: '#d33',
+                confirmButtonText: 'Yes, delete it!'
+            }).then((result) => {
+                if (result.isConfirmed) {
+                    Swal.fire('Deleted!', 'Your file has been deleted.', 'success');
+                }
+            });
+        }
+
+        function htmlAlert() {
+            Swal.fire({
+                title: '<strong>HTML <u>example</u></strong>',
+                icon: 'info',
+                html: 'You can use <b>bold text</b>, <a href="//sweetalert2.github.io">links</a> and other HTML tags.',
+                showCloseButton: true,
+                showCancelButton: true,
+                focusConfirm: false,
+                confirmButtonText: '<i class="fa fa-thumbs-up"></i> Great!',
+                cancelButtonText: '<i class="fa fa-thumbs-down"></i>'
+            });
+        }
+
+        function autoCloseAlert() {
+            let timerInterval;
+            Swal.fire({
+                title: 'Auto close alert!',
+                html: 'This will close in <b></b> milliseconds.',
+                timer: 2000,
+                timerProgressBar: true,
+                didOpen: () => {
+                    Swal.showLoading();
+                    timerInterval = setInterval(() => {
+                        const content = Swal.getHtmlContainer();
+                        if (content) {
+                            content.querySelector('b').textContent = Swal.getTimerLeft();
+                        }
+                    }, 100);
+                },
+                willClose: () => {
+                    clearInterval(timerInterval);
+                }
+            });
+        }
+
+        function inputAlert() {
+            Swal.fire({
+                title: 'Input something',
+                input: 'text',
+                inputLabel: 'Your input here:',
+                inputPlaceholder: 'Enter your text',
+                showCancelButton: true
+            }).then((result) => {
+                if (result.value) {
+                    Swal.fire(`You entered: ${result.value}`);
+                }
+            });
+        }
+
+        function imageAlert() {
+            Swal.fire({
+                title: 'Sweet!',
+                text: 'Here is an image.',
+                imageUrl: 'https://unsplash.it/400/200',
+                imageWidth: 400,
+                imageHeight: 200,
+                imageAlt: 'Custom image'
+            });
+        }
+
+        function toastAlert() {
+            const Toast = Swal.mixin({
+                toast: true,
+                position: 'top-end',
+                showConfirmButton: false,
+                timer: 3000,
+                timerProgressBar: true,
+            });
+            
+            Toast.fire({
+                icon: 'success',
+                title: 'Signed in successfully'
+            });
+        }
+    </script>
+</body>
+</html>
