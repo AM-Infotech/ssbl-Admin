@@ -1,18 +1,149 @@
-<!doctype html>
-<title>Site Maintenance</title>
-<style>
-  body { text-align: center; padding: 150px; }
-  h1 { font-size: 50px; }
-  body { font: 20px Helvetica, sans-serif; color: #333; }
-  article { display: block; text-align: left; width: 650px; margin: 0 auto; }
-  a { color: #dc8100; text-decoration: none; }
-  a:hover { color: #333; text-decoration: none; }
-</style>
-
-<article>
-    <h1>We&rsquo;ll be back soon!</h1>
-    <div>
-        <p>Sorry for the inconvenience but we&rsquo;re performing some maintenance at the moment. If you need to you can always <a href="mailto:#">contact us</a>, otherwise we&rsquo;ll be back online shortly!</p>
-        <p>&mdash; The Team</p>
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Brand Icons</title>
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.1/css/bootstrap.min.css">
+    <script src="https://kit.fontawesome.com/7aabe72cdf.js" crossorigin="anonymous"></script>
+    <style>
+        .icon-grid {
+            display: flex;
+            flex-wrap: wrap;
+            justify-content: space-between;
+            margin-top: 20px;
+        }
+        .icon-box {
+            text-align: center;
+            width: 18%;
+            margin-bottom: 20px;
+            cursor: pointer;
+        }
+        i {
+            font-size: 24px;
+            margin-bottom: 5px;
+        }
+        .modal-content {
+            color: black;
+        }
+        .copy-button {
+            margin-top: 10px;
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <h1 class="text-center">Brand Icons</h1>
+		<div class="alert alert-info"><b><em>Click the icon to copy its code.</em></b></div>
+        <div class="icon-grid" id="iconGrid"></div>
     </div>
-</article>
+
+    <div class="modal fade" id="iconModal" tabindex="-1" role="dialog" aria-labelledby="iconModalLabel">
+        <div class="modal-dialog" role="document">
+            <div class="modal-content">
+                <div class="modal-header">
+					<div class="row">
+						<div class="col-lg-11">
+							<h4 class="modal-title" id="iconModalLabel">Icon Code</h4>
+						</div>
+						<div class="col-lg-1">
+							<button type="button" class="close" data-dismiss="modal" aria-label="Close">
+								<i class="fa-solid fa-xmark" style="color:red;"></i>
+							</button>
+						</div>
+					</div>	
+                </div>
+                <div class="modal-body">
+                    <code id="iconCode"></code>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <script>
+        const brandIcons = [
+            { class: "fa-brands fa-facebook", name: "Facebook" },
+            { class: "fa-brands fa-twitter", name: "Twitter" },
+            { class: "fa-brands fa-github", name: "GitHub" },
+            { class: "fa-brands fa-google", name: "Google" },
+            { class: "fa-brands fa-instagram", name: "Instagram" },
+            { class: "fa-brands fa-linkedin", name: "LinkedIn" },
+            { class: "fa-brands fa-youtube", name: "YouTube" },
+            { class: "fa-brands fa-spotify", name: "Spotify" },
+            { class: "fa-brands fa-slack", name: "Slack" },
+            { class: "fa-brands fa-dribbble", name: "Dribbble" },
+            { class: "fa-brands fa-pinterest", name: "Pinterest" },
+            { class: "fa-brands fa-reddit", name: "Reddit" },
+            { class: "fa-brands fa-tiktok", name: "TikTok" },
+            { class: "fa-brands fa-apple", name: "Apple" },
+            { class: "fa-brands fa-android", name: "Android" },
+            { class: "fa-brands fa-windows", name: "Windows" },
+            { class: "fa-brands fa-etsy", name: "Etsy" },
+            { class: "fa-brands fa-amazon", name: "Amazon" },
+            { class: "fa-brands fa-vimeo", name: "Vimeo" },
+            { class: "fa-brands fa-foursquare", name: "Foursquare" },
+            { class: "fa-brands fa-snapchat", name: "Snapchat" },
+            { class: "fa-brands fa-skype", name: "Skype" },
+            { class: "fa-brands fa-tumblr", name: "Tumblr" },
+            { class: "fa-brands fa-wordpress", name: "WordPress" },
+            { class: "fa-brands fa-wikipedia-w", name: "Wikipedia" },
+            { class: "fa-brands fa-telegram", name: "Telegram" },
+            { class: "fa-brands fa-soundcloud", name: "SoundCloud" },
+            { class: "fa-brands fa-amazon-pay", name: "Amazon Pay" },
+            { class: "fa-brands fa-yelp", name: "Yelp" },
+            { class: "fa-brands fa-stack-overflow", name: "Stack Overflow" },
+            { class: "fa-brands fa-qq", name: "QQ" },
+            { class: "fa-brands fa-weibo", name: "Weibo" },
+            { class: "fa-brands fa-vk", name: "VK" },
+            { class: "fa-brands fa-500px", name: "500px" },
+            { class: "fa-brands fa-adn", name: "App.net" },
+            { class: "fa-brands fa-bimobject", name: "BIMobject" },
+            { class: "fa-brands fa-apple-pay", name: "Apple Pay" },
+            { class: "fa-brands fa-whatsapp", name: "WhatsApp" },
+            { class: "fa-brands fa-cc-amex", name: "American Express" },
+            { class: "fa-brands fa-cc-diners-club", name: "Diners Club" },
+            { class: "fa-brands fa-cc-jcb", name: "JCB" },
+            { class: "fa-brands fa-cc-mastercard", name: "MasterCard" },
+            { class: "fa-brands fa-cc-paypal", name: "PayPal" },
+            { class: "fa-brands fa-cc-stripe", name: "Stripe" },
+            { class: "fa-brands fa-cc-visa", name: "Visa" },
+            { class: "fa-brands fa-linode", name: "Linode" },
+            { class: "fa-brands fa-ny-times", name: "NY Times" },
+            { class: "fa-brands fa-hubspot", name: "HubSpot" },
+            { class: "fa-brands fa-pied-piper", name: "Pied Piper" },
+            { class: "fa-brands fa-app-store", name: "App Store" },
+            { class: "fa-brands fa-trello", name: "Trello" },
+            { class: "fa-brands fa-gitlab", name: "GitLab" },
+            { class: "fa-brands fa-squarespace", name: "Squarespace" },
+            { class: "fa-brands fa-aws", name: "AWS" },
+            { class: "fa-brands fa-figma", name: "Figma" },
+            { class: "fa-brands fa-invision", name: "InVision" },
+            { class: "fa-brands fa-square-instagram", name: "Instagram Square" },
+            { class: "fa-brands fa-42-group", name: "42 Group" },
+            { class: "fa-brands fa-intercom", name: "Intercom" },
+            { class: "fa-brands fa-line", name: "Line" }
+        ];
+
+        const iconGrid = document.getElementById('iconGrid');
+
+        brandIcons.forEach(icon => {
+            const iconBox = document.createElement('div');
+            iconBox.classList.add('icon-box');
+            iconBox.innerHTML = `<i class="${icon.class}"></i><p>${icon.name}</p>`;
+            iconBox.onclick = () => showIconCode(icon.class);
+            iconGrid.appendChild(iconBox);
+        });
+
+        function showIconCode(icon) {
+            const iconCode = `<i class="${icon}"></i>`;
+            document.getElementById('iconCode').textContent = iconCode;
+            $('#iconModal').modal('show');
+
+        }
+
+    </script>
+
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.1/js/bootstrap.min.js"></script>
+</body>
+</html>
