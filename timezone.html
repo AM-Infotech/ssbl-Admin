@@ -11,7 +11,7 @@
  <div class="container">
         <h1 class="text-center">Time Zones</h1>
 	
-<select name="timezone" id="timezone">
+<select name="timezone" id="timezone" onchange="displayCurrentTime()">
     <optgroup label="Africa">
         <option value="Africa/Abidjan">Africa/Abidjan</option>
         <option value="Africa/Accra">Africa/Accra</option>
@@ -451,6 +451,28 @@
         <option value="Pacific/Wallis">Pacific/Wallis</option>
     </optgroup>
 </select>
+	 	<b>Current Time: <span id="currentTime">--:--:--</span></b>
+
     </div>
+
+    <script>
+        function displayCurrentTime() {
+            const timezone = document.getElementById('timezone').value;
+            const currentTimeElement = document.getElementById('currentTime');
+            
+            const now = new Date().toLocaleString('en-US', {
+                timeZone: timezone,
+                hour12: false,
+                hour: '2-digit',
+                minute: '2-digit',
+                second: '2-digit'
+            });
+
+            currentTimeElement.textContent = now;
+        }
+
+        // Display the initial time based on the default selected time zone
+        window.onload = displayCurrentTime;
+    </script>
 </body>
 </html>
